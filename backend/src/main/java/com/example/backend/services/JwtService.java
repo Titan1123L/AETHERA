@@ -1,27 +1,20 @@
 package com.example.backend.services;
 
 import io.jsonwebtoken.Jwts;
-
 import io.jsonwebtoken.SignatureAlgorithm;
-
 import io.jsonwebtoken.security.Keys;
-
 import org.springframework.stereotype.Service;
-
 import java.security.Key;
-
 import java.util.Date;
 
 @Service
 public class JwtService {
 
-    // SECRET KEY
     private final Key key =
             Keys.secretKeyFor(
                     SignatureAlgorithm.HS256
             );
 
-    // GENERATE TOKEN
 public String generateToken(
         String email
 ) {
@@ -48,7 +41,6 @@ public String generateToken(
 
             .compact();
 }
-// VALIDATE TOKEN
 public String extractEmail(
         String token
 ) {

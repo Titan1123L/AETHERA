@@ -1,13 +1,9 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.Favorite;
-
 import com.example.backend.repository.FavoriteRepository;
-
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -25,7 +21,6 @@ public class FavoriteController {
                 this.favoriteRepository = favoriteRepository;
         }
 
-        // GET FAVORITES
         @GetMapping
         public List<Favorite> getFavorites(
                         HttpServletRequest request) {
@@ -42,7 +37,6 @@ public class FavoriteController {
                                 .findByUserEmail(email);
         }
 
-        // ADD FAVORITE
         @PostMapping
         public Favorite addFavorite(
                         @RequestBody Favorite favorite,
@@ -68,7 +62,6 @@ public class FavoriteController {
                                 favorite);
         }
 
-        // DELETE FAVORITE
         @DeleteMapping("/{id}")
         public void deleteFavorite(
                         @PathVariable Long id) {

@@ -1,13 +1,9 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.SearchHistory;
-
 import com.example.backend.repository.SearchHistoryRepository;
-
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -31,7 +27,6 @@ public class SearchHistoryController {
                 historyRepository;
     }
 
-    // GET HISTORY
     @GetMapping
     public List<SearchHistory>
     getHistory(
@@ -55,7 +50,6 @@ public class SearchHistoryController {
                 );
     }
 
-    // ADD HISTORY
     @PostMapping
     public SearchHistory addHistory(
             @RequestBody
@@ -81,8 +75,7 @@ public class SearchHistoryController {
         );
     }
 
-    // CLEAR HISTORY
-    
+   
     @DeleteMapping("/{id}")
 
 public void deleteHistoryItem(

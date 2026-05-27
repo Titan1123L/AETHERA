@@ -15,7 +15,6 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    // CURRENT WEATHER
     @GetMapping("/current")
     public String getCurrentWeather(
             @RequestParam double lat,
@@ -28,7 +27,6 @@ public class WeatherController {
         );
     }
 
-    // FORECAST
     @GetMapping("/forecast")
     public String getForecast(
             @RequestParam double lat,
@@ -41,7 +39,6 @@ public class WeatherController {
         );
     }
 
-    // REVERSE GEOCODING
     @GetMapping("/reverse-geocode")
     public String reverseGeocode(
             @RequestParam double lat,
@@ -54,7 +51,6 @@ public class WeatherController {
         );
     }
 
-    // SEARCH CITY
     @GetMapping("/search")
     public String searchLocations(
             @RequestParam String query

@@ -18,7 +18,6 @@ public class WeatherService {
         this.restTemplate = restTemplate;
     }
 
-    // CURRENT WEATHER
     public String getCurrentWeather(
             double lat,
             double lon
@@ -39,7 +38,6 @@ public class WeatherService {
         );
     }
 
-    // FORECAST
     public String getForecast(
             double lat,
             double lon
@@ -60,7 +58,6 @@ public class WeatherService {
         );
     }
 
-    // REVERSE GEOCODING
     public String reverseGeocode(
             double lat,
             double lon
@@ -80,7 +77,6 @@ public class WeatherService {
         );
     }
 
-    // DIRECT GEOCODING
     public String searchLocations(
             String query
     ) {

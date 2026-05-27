@@ -3,9 +3,7 @@ package com.example.backend.dto;
 public class SignupRequest {
 
     private String name;
-
     private String email;
-
     private String password;
 
     public String getName() {

@@ -11,21 +11,18 @@ public class Favorite {
     private Long id;
 
     private String city;
-
     private double lat;
-
     private double lon;
 
     private String country;
     private String state;
 
-    // USER EMAIL
     private String userEmail;
 
     public Favorite() {
     }
 
-    // GETTERS & SETTERS
+   
 
     public String getState() {
         return state;
