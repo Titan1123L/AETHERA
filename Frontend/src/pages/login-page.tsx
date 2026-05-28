@@ -59,8 +59,7 @@ export default function LoginPage() {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse dark:bg-cyan-500/5" />
       </div>
 
-      <div className="glass-card dark:glass-card-dark w-full max-w-md p-8 space-y-6">
-        <div className="space-y-2">
+<div className="glass-card dark:glass-card-dark w-full max-w-md p-8 space-y-6 bg-white/60 dark:bg-black/30 border-primary/20 dark:border-white/10">        <div className="space-y-2">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Welcome Back
           </h1>
@@ -80,7 +79,7 @@ export default function LoginPage() {
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="glass-effect backdrop-blur border-white/20 bg-white/10 dark:bg-white/5"
+               className="glass-effect backdrop-blur border-primary/30 bg-white/40 dark:border-white/20 dark:bg-white/5"
             />
           </div>
 
@@ -94,7 +93,7 @@ export default function LoginPage() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="glass-effect backdrop-blur border-white/20 bg-white/10 dark:bg-white/5"
+             className="glass-effect backdrop-blur border-primary/30 bg-white/40 dark:border-white/20 dark:bg-white/5"
             />
           </div>
 
@@ -135,7 +134,7 @@ export default function LoginPage() {
 
         <Button
           variant="outline"
-          className="w-full glass-effect border-white/20 hover:bg-white/10 dark:hover:bg-white/5"
+          className="w-full glass-effect border-primary/30 dark:border-white/20 hover:bg-primary/10 dark:hover:bg-white/5"
           onClick={() => navigate("/signup")}
         >
           Create Account

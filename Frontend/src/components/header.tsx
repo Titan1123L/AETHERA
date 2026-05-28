@@ -19,7 +19,7 @@ const Header = () => {
   const isSignupPage = location.pathname === "/signup";
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-2xl border-b border-white/10 bg-white/70 dark:bg-slate-900/80 shadow-lg">
+     <header className="sticky top-0 z-50 glass-effect backdrop-blur-2xl border-b border-primary/15 bg-white/50 dark:border-white/10 dark:bg-slate-900/80 support-[backdrop-blur]:bg-white/40 dark:support-[backdrop-blur]:bg-slate-900/70 shadow-lg">
       <div className="container mx-auto px-4 py-3">
         {/* Main Header Row */}
         <div className="flex items-center justify-between gap-6 h-14">
@@ -81,7 +81,7 @@ const Header = () => {
                   logout();
                   navigate("/login");
                 }}
-                className="bg-red-500 hover:bg-red-600 text-white text-xs sm:text-sm font-medium transition-all duration-300 shadow-lg hover:scale-105"
+                 className="glass-effect backdrop-blur border-primary/30 dark:border-white/20 hover:bg-primary/10 dark:hover:bg-primary/10 hover:border-primary/40 dark:hover:border-primary/30 text-xs sm:text-sm hidden sm:inline-flex transition-all duration-300"
               >
                 Logout
               </Button>
@@ -94,7 +94,7 @@ const Header = () => {
                   <Button
                     variant="outline"
                     onClick={() => navigate("/login")}
-                    className="border-white/20 hover:bg-primary/10 hover:border-primary/30 text-xs sm:text-sm hidden sm:inline-flex transition-all duration-300"
+                    className="glass-effect backdrop-blur border-primary/30 dark:border-white/20 hover:bg-primary/10 dark:hover:bg-primary/10 hover:border-primary/40 dark:hover:border-primary/30 text-xs sm:text-sm hidden sm:inline-flex transition-all duration-300"
                   >
                     Sign In
                   </Button>
