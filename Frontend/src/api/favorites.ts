@@ -1,5 +1,5 @@
 const BASE_URL =
-  "http://localhost:8080/api/favorites";
+  `${import.meta.env.VITE_API_URL}/api/favorites`;
 
 
 // GET TOKEN

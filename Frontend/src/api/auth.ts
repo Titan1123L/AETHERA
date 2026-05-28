@@ -1,6 +1,6 @@
 
 const BASE_URL =
-  "http://localhost:8080/api/auth";
+  `${import.meta.env.VITE_API_URL}/api/auth`;
 
 
 // SIGNUP
@@ -59,7 +59,19 @@ export async function login(
   }
 
   // Backend returns plain text JWT
-  const token = await response.text();
+ const token = await response.text();
 
-  return token;
+if (
+  token === "User not found" ||
+  token === "Invalid password"
+) {
+  throw new Error(token);
+}
+
+localStorage.setItem(
+  "token",
+  token.trim()
+);
+
+return token; 
 }

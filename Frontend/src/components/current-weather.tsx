@@ -2,9 +2,7 @@ import { Button } from "./ui/button";
 import { useFavorites } from "../hooks/use-favorite";
 
 import { toast } from "sonner";
-import {
-  ArrowDown,
-  ArrowUp,
+import { ArrowDown,ArrowUp,
   Droplets,
   Wind,
   Sunrise,
@@ -122,7 +120,7 @@ export function CurrentWeather({ data, locationName }: CurrentWeatherProps) {
 
             <div className="space-y-3">
               <p className="text-sm font-medium text-muted-foreground">
-                Feels like{' '}
+                Feels like{" "}
                 <span className="text-primary font-semibold">
                   {formatTemp(feels_like)}
                 </span>
@@ -163,7 +161,9 @@ export function CurrentWeather({ data, locationName }: CurrentWeatherProps) {
                   <Wind className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-muted-foreground">Wind</p>
+                  <p className="text-xs font-medium text-muted-foreground">
+                    Wind
+                  </p>
                   <p className="text-sm font-bold">{speed} m/s</p>
                 </div>
               </div>
@@ -175,7 +175,9 @@ export function CurrentWeather({ data, locationName }: CurrentWeatherProps) {
                   <Sunrise className="h-4 w-4 text-amber-600 dark:text-amber-400" />
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-muted-foreground">Sunrise</p>
+                  <p className="text-xs font-medium text-muted-foreground">
+                    Sunrise
+                  </p>
                   <p className="text-sm font-bold">{formatTime(sunrise)}</p>
                 </div>
               </div>
@@ -187,7 +189,9 @@ export function CurrentWeather({ data, locationName }: CurrentWeatherProps) {
                   <Sunset className="h-4 w-4 text-pink-600 dark:text-pink-400" />
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-muted-foreground">Sunset</p>
+                  <p className="text-xs font-medium text-muted-foreground">
+                    Sunset
+                  </p>
                   <p className="text-sm font-bold">{formatTime(sunset)}</p>
                 </div>
               </div>

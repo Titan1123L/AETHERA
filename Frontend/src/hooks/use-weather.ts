@@ -6,7 +6,7 @@ interface Coordinates {
 }
 
 const BASE_URL =
-  "http://localhost:8080/api/weather";
+  `${import.meta.env.VITE_API_URL}/api/weather`;
 
 export const WEATHER_KEYS = {
 

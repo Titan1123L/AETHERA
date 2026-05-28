@@ -32,7 +32,7 @@ function App() {
       const lon = position.coords.longitude;
 
       const response = await fetch(
-        `http://localhost:8080/api/weather?lat=${lat}&lon=${lon}`,
+        `${import.meta.env.VITE_API_URL}/api/weather?lat=${lat}&lon=${lon}`,
       );
 
       const data = await response.json();

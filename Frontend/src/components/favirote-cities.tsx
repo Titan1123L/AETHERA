@@ -1,29 +1,18 @@
 import { useNavigate } from "react-router-dom";
 
-import {
-  ScrollArea,
-  ScrollBar,
-} from "@/components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-import { Button }
-from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
-import {
-  X,
-  Loader2,
-} from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 
-import { toast }
-from "sonner";
+import { toast } from "sonner";
 
-import { useFavorites }
-from "@/hooks/use-favorite";
+import { useFavorites } from "@/hooks/use-favorite";
 
-import { useWeatherQuery }
-from "@/hooks/use-weather";
+import { useWeatherQuery } from "@/hooks/use-weather";
 
 interface FavoriteCityCardProps {
-
   id: number;
 
   city: string;
@@ -36,13 +25,10 @@ interface FavoriteCityCardProps {
 
   state?: string;
 
-  onRemove: (
-    id: number
-  ) => void;
+  onRemove: (id: number) => void;
 }
 
 function FavoriteCityCard({
-
   id,
 
   city,
@@ -56,27 +42,17 @@ function FavoriteCityCard({
   state,
 
   onRemove,
-
 }: FavoriteCityCardProps) {
+  const navigate = useNavigate();
 
-  const navigate =
-    useNavigate();
-
-  const {
-    data: weather,
-    isLoading,
-  } = useWeatherQuery({
+  const { data: weather, isLoading } = useWeatherQuery({
     lat,
     lon,
   });
 
-  const handleNavigate =
-    () => {
-
-      navigate(
-        `/city/${city}?lat=${lat}&lon=${lon}`
-      );
-    };
+  const handleNavigate = () => {
+    navigate(`/city/${city}?lat=${lat}&lon=${lon}`);
+  };
 
   return (
     <div
@@ -139,17 +115,9 @@ function FavoriteCityCard({
 }
 
 export function FavoriteCities() {
+  const { favorites, deleteFavorite } = useFavorites();
 
-  const {
-    favorites,
-    deleteFavorite,
-  } = useFavorites();
-
-  if (
-    !favorites ||
-    favorites.length === 0
-  ) {
-
+  if (!favorites || favorites.length === 0) {
     return null;
   }
 
@@ -161,30 +129,17 @@ export function FavoriteCities() {
 
       <ScrollArea className="w-full whitespace-nowrap rounded-xl border border-white/10">
         <div className="flex gap-4 px-4 py-3">
-
-          {favorites.map(
-            (city: any) => (
-
-              <FavoriteCityCard
-                key={city.id}
-                {...city}
-                onRemove={() =>
-                  deleteFavorite.mutate(
-                    city.id
-                  )
-                }
-              />
-            )
-          )}
-
+          {favorites.map((city: any) => (
+            <FavoriteCityCard
+              key={city.id}
+              {...city}
+              onRemove={() => deleteFavorite.mutate(city.id)}
+            />
+          ))}
         </div>
 
-        <ScrollBar
-          orientation="horizontal"
-        />
-
+        <ScrollBar orientation="horizontal" />
       </ScrollArea>
-
     </div>
   );
 }

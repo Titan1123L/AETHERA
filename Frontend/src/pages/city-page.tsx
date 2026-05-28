@@ -1,23 +1,12 @@
-import {
-  useSearchParams,
-  useParams,
-} from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 
-import {
-  CurrentWeather,
-} from "@/components/current-weather";
+import { CurrentWeather } from "@/components/current-weather";
 
-import {
-  HourlyTemperature,
-} from "@/components/hourly-temp";
+import { HourlyTemperature } from "@/components/hourly-temp";
 
-import {
-  WeatherDetails,
-} from "@/components/weather-detail";
+import { WeatherDetails } from "@/components/weather-detail";
 
-import {
-  WeatherForecast,
-} from "@/components/weather-forecast";
+import { WeatherForecast } from "@/components/weather-forecast";
 
 import {
   useWeatherQuery,
@@ -25,26 +14,17 @@ import {
   useReverseGeocodeQuery,
 } from "@/hooks/use-weather";
 
-import WeatherSkeleton
-from "@/components/loading";
+import WeatherSkeleton from "@/components/loading";
 
 export default function CityPage() {
-
   useParams();
 
-  const [searchParams] =
-    useSearchParams();
+  const [searchParams] = useSearchParams();
 
   // GET LAT/LON FROM URL
-  const lat =
-    Number(
-      searchParams.get("lat")
-    );
+  const lat = Number(searchParams.get("lat"));
 
-  const lon =
-    Number(
-      searchParams.get("lon")
-    );
+  const lon = Number(searchParams.get("lon"));
 
   const coordinates = {
     lat,
@@ -52,20 +32,11 @@ export default function CityPage() {
   };
 
   // FETCH WEATHER
-  const currentWeatherQuery =
-    useWeatherQuery(
-      coordinates
-    );
+  const currentWeatherQuery = useWeatherQuery(coordinates);
 
-  const forecastQuery =
-    useForecastQuery(
-      coordinates
-    );
+  const forecastQuery = useForecastQuery(coordinates);
 
-  const locationQuery =
-    useReverseGeocodeQuery(
-      coordinates
-    );
+  const locationQuery = useReverseGeocodeQuery(coordinates);
 
   // LOADING
   if (
@@ -73,24 +44,12 @@ export default function CityPage() {
     forecastQuery.isLoading ||
     locationQuery.isLoading
   ) {
-
     return <WeatherSkeleton />;
   }
 
   // ERROR
-  if (
-    currentWeatherQuery.error ||
-    forecastQuery.error
-  ) {
-
-    return (
-
-      <div className="p-4">
-
-        Failed to load weather data.
-
-      </div>
-    );
+  if (currentWeatherQuery.error || forecastQuery.error) {
+    return <div className="p-4">Failed to load weather data.</div>;
   }
 
   return (
@@ -123,9 +82,7 @@ export default function CityPage() {
         )}
 
         {/* Forecast */}
-        {forecastQuery.data && (
-          <WeatherForecast data={forecastQuery.data} />
-        )}
+        {forecastQuery.data && <WeatherForecast data={forecastQuery.data} />}
       </div>
     </div>
   );

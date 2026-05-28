@@ -83,11 +83,12 @@ const weatherDashboard = () => {
             onClick={handleRefresh}
             className="w-fit mt-4"
           >
-            <RefreshCw className="mr-2 h-4 w-4" />
+            
             Refresh
           </Button>
         </AlertDescription>
       </Alert>
+      
     );
   }
 
