@@ -7,52 +7,59 @@
 
 /* Aethera Premium Color System */
 :root {
-  /* Light theme - Enhanced contrast with subtle sky background */
-  --background: oklch(0.96 0.01 210);
-  --foreground: oklch(0.12 0 0);
-  --card: oklch(0.99 0.005 200);
-  --card-foreground: oklch(0.1 0 0);
+   /* Light theme - Professional Blue & White */
+  --background: #4984d1;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
   
-  /* Cyan accent for light theme - Deeper and more saturated */
-  --primary: oklch(0.42 0.25 200);
-  --primary-foreground: oklch(1 0 0);
+  /* Primary Blue */
+  --primary: #2563EB;
+  --primary-foreground: #FFFFFF;
   
-  --secondary: oklch(0.48 0.22 160);
-  --secondary-foreground: oklch(1 0 0);
+  /* Secondary Cyan */
+  --secondary: #38BDF8;
+  --secondary-foreground: #FFFFFF;
   
-  --muted: oklch(0.88 0.02 210);
-  --muted-foreground: oklch(0.45 0 0);
+  /* Muted - Cool Gray */
+  --muted: #E2E8F0;
+  --muted-foreground: #64748B;
   
-  --accent: oklch(0.48 0.25 160);
-  --accent-foreground: oklch(1 0 0);
+  /* Accent - Soft Cyan */
+  --accent: #38BDF8;
+  --accent-foreground: #FFFFFF;
   
-  --destructive: oklch(0.58 0.26 27);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
   
-  --border: oklch(0.90 0.02 210);
-  --input: oklch(0.94 0.01 210);
-  --ring: oklch(0.42 0.25 200);
+  /* Borders & Input - Light Gray */
+  --border: #E2E8F0;
+  --input: #F4F7FB;
+  --ring: #2563EB;
   
-  --chart-1: oklch(0.48 0.25 160);
-  --chart-2: oklch(0.60 0.22 250);
-  --chart-3: oklch(0.62 0.22 340);
-  --chart-4: oklch(0.54 0.24 40);
-  --chart-5: oklch(0.45 0.24 280);
+  /* Chart colors */
+  --chart-1: #2563EB;
+  --chart-2: #38BDF8;
+  --chart-3: #06B6D4;
+  --chart-4: #0891B2;
+  --chart-5: #1E40AF;
   
   --radius: 0.75rem;
   
-  --sidebar: oklch(0.96 0.01 210);
-  --sidebar-foreground: oklch(0.12 0 0);
-  --sidebar-primary: oklch(0.42 0.25 200);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.48 0.25 160);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.90 0.02 210);
-  --sidebar-ring: oklch(0.42 0.25 200);
+  
+  /* Sidebar */
+  --sidebar: #F4F7FB;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: #2563EB;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #38BDF8;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #2563EB;
   
   /* Glass morphism effects - Light theme */
-  --glass-bg: rgba(240, 245, 255, 0.85);
-  --glass-border: rgba(50, 150, 200, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(37, 99, 235, 0.15);
 }
 .dark {
   /* Dark theme - Obsidian & Lavender */
@@ -157,7 +164,7 @@
 @layer components {
   /* Glass morphism components */
   .glass-card {
-    @apply backdrop-blur-md border border-primary/20 bg-white/40 dark:border-white/10 dark:bg-white/5 rounded-2xl shadow-2xl;
+    @apply backdrop-blur-sm border border-border bg-card rounded-2xl shadow-sm dark:border-white/10 dark:bg-slate-900 dark:shadow-lg;
   }
   
 
