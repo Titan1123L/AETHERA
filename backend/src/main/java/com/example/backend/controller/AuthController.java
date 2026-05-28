@@ -6,6 +6,7 @@ import com.example.backend.repository.UserRepository;
 import com.example.backend.dto.LoginRequest;
 import com.example.backend.services.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,106 +17,93 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:5173")
 public class AuthController {
 
-    private final UserRepository userRepository;
+        private final UserRepository userRepository;
 
-    private final PasswordEncoder passwordEncoder;
+        private final PasswordEncoder passwordEncoder;
 
-    private final JwtService jwtService;
+        private final JwtService jwtService;
 
-    public AuthController(
-        UserRepository userRepository,
-        PasswordEncoder passwordEncoder,
-        JwtService jwtService
-) {
+        public AuthController(
+                        UserRepository userRepository,
+                        PasswordEncoder passwordEncoder,
+                        JwtService jwtService) {
 
-    this.userRepository = userRepository;
+                this.userRepository = userRepository;
 
-    this.passwordEncoder = passwordEncoder;
+                this.passwordEncoder = passwordEncoder;
 
-    this.jwtService = jwtService;
-}
-
-    @PostMapping("/signup")
-    public String signup(
-            @RequestBody SignupRequest request
-    ) {
-        if (
-            userRepository.findByEmail(
-                    request.getEmail()
-            ) != null
-        ) {
-
-            return "Email already exists";
+                this.jwtService = jwtService;
         }
 
-        
-        User user = new User();
+        @PostMapping("/signup")
+        public String signup(
+                        @RequestBody SignupRequest request) {
+                if (userRepository.findByEmail(
+                                request.getEmail()) != null) {
 
-        user.setName(
-                request.getName()
-        );
+                        return "Email already exists";
+                }
 
-        user.setEmail(
-                request.getEmail()
-        );
+                User user = new User();
 
-        user.setPassword(
-                passwordEncoder.encode(
-                        request.getPassword()
-                )
-        );
+                user.setName(
+                                request.getName());
 
-       
-        userRepository.save(user);
+                user.setEmail(
+                                request.getEmail());
 
-        return "User registered successfully";
-    }
-    @PostMapping("/login")
-public String login(
-        @RequestBody LoginRequest request
-) {
+                user.setPassword(
+                                passwordEncoder.encode(
+                                                request.getPassword()));
 
-    User user =
-            userRepository.findByEmail(
-                    request.getEmail()
-            );
+                userRepository.save(user);
 
- 
-    if (user == null) {
+                return "User registered successfully";
+        }
 
-        return "User not found";
-    }
+        @PostMapping("/login")
+        public ResponseEntity<?> login(
+                        @RequestBody LoginRequest request) {
 
-    boolean passwordMatches =
-            passwordEncoder.matches(
-                    request.getPassword(),
-                    user.getPassword()
-            );
+                User user = userRepository.findByEmail(
+                                request.getEmail());
 
-    if (!passwordMatches) {
+                if (user == null) {
 
-        return "Invalid password";
-    }
+                        return ResponseEntity
+                                        .status(401)
+                                        .body("User not found");
+                }
 
-    return jwtService.generateToken(
-            user.getEmail()
-    );
-}
-@GetMapping("/profile")
-public String profile(
-        HttpServletRequest request
-) {
+                boolean passwordMatches = passwordEncoder.matches(
+                                request.getPassword(),
+                                user.getPassword());
 
-    Object email =
-            request.getAttribute(
-                    "email"
-            );
+                if (!passwordMatches) {
 
-    if (email == null) {
+                        return ResponseEntity
+                                        .status(401)
+                                        .body("Invalid password");
+                }
 
-        return "Unauthorized";
-    }
+                String token = jwtService.generateToken(
+                                user.getEmail());
 
-    return "Welcome " + email;
-}
+                return ResponseEntity.ok(token);
+        }
+
+        @GetMapping("/profile")
+        public String profile(
+                        HttpServletRequest request) {
+
+                Object email = request.getAttribute(
+                                "email");
+
+                if (email == null) {
+
+                        return "Unauthorized";
+                }
+
+                return "Welcome " + email;
+        }
 }
