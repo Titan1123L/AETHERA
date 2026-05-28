@@ -20,8 +20,7 @@ public class CorsConfig {
                         .allowedOrigins("http://localhost:5173"
 
                         )
-                        .allowedMethods("*")
-                        ;
+                        .allowedMethods("*");
             }
         };
     }
