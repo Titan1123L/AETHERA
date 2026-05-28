@@ -25,7 +25,6 @@ export function HourlyTemperature({ data }: HourlyTemperatureProps) {
   if (!data || !data.list) {
     return null;
   }
-  // NEXT 24 HOURS
   const chartData: ChartData[] = data.list.slice(0, 8).map((item) => ({
     time: format(new Date(item.dt * 1000), "ha"),
 
@@ -53,7 +52,6 @@ export function HourlyTemperature({ data }: HourlyTemperatureProps) {
               axisLine={false}
             />
 
-            {/* Y AXIS */}
             <YAxis
               stroke="currentColor"
               className="text-muted-foreground"
@@ -63,7 +61,6 @@ export function HourlyTemperature({ data }: HourlyTemperatureProps) {
               tickFormatter={(value) => `${value}°`}
             />
 
-            {/* TOOLTIP */}
             <Tooltip
               content={({ active, payload }) => {
                 if (active && payload && payload.length) {
